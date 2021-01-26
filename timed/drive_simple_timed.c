@@ -50,15 +50,16 @@ int main()
 	// For carpet at home 
 	for (int i=0;i<4;i++){
 		rc_motor_set(1,-0.25);
-		rc_motor_set(2,0.25);
-		rc_nanosleep(8E9); 
+		rc_motor_set(2,0.27);
+		rc_nanosleep(4.5E9); 
 		rc_motor_set(1,0.25);
 		rc_motor_set(2,0.25);
-		rc_nanosleep(1.8E9);
+		rc_nanosleep(0.76E9);
 	}
 
 	rc_motor_set(1,0);
 	rc_motor_set(2,0);
+	rc_motor_cleanup();
 
 	// close file descriptors
 	rc_remove_pid_file();	// remove pid file LAST

@@ -49,15 +49,15 @@ int main()
 	// Keep looping until state changes to EXITING
 	// Baisc form not working well on non-uniform floor
 	// For carpet at home
-	int const Enc_1m = 5000;
-	int const Enc_90deg = 1000; //1000; 
+	int const Enc_1m = 5300;
+	int const Enc_90deg = 820; //1000; 
 	int Enc_st_1, Enc_st_2;
 	for (int i=0;i<4;i++){
 		Enc_st_1 = rc_encoder_eqep_read(1);
 		Enc_st_2 = rc_encoder_eqep_read(2);
 		while (rc_encoder_eqep_read(1)-Enc_st_1 > -Enc_1m && rc_encoder_eqep_read(2)-Enc_st_2 < Enc_1m){
 			rc_motor_set(1,-0.25);
-			rc_motor_set(2,0.25);
+			rc_motor_set(2,0.266);
 		}
 		Enc_st_1 = rc_encoder_eqep_read(1);
 		Enc_st_2 = rc_encoder_eqep_read(2);
@@ -68,7 +68,7 @@ int main()
 	}
 	rc_motor_set(1,0);
 	rc_motor_set(2,0);
-
+	rc_motor_cleanup();
 	rc_encoder_eqep_cleanup();
 	rc_remove_pid_file();	// remove pid file LAST
 	return 0;
